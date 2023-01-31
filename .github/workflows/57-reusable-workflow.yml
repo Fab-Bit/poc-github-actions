@@ -10,6 +10,12 @@ on:
       secondword:
         description: "The second output string"
         value: ${{ jobs.example_job.outputs.output2 }}
+  workflow_dispatch:
+   inputs:
+      firstword:
+        type: string
+        description: 'IP address of kURL instance. The instance should be fully installed'
+        required: true
 
 jobs:
   example_job:
