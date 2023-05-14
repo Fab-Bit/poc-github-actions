@@ -46,14 +46,16 @@ jobs:
                 "text": {
                   "type": "mrkdwn",
                   "text": "\n ${{ job.status  }}"
-                },
-                  {
+                }
+              },
+              {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
                   "text": "\n${{ job.status  }}"
-                },
-                  {
+                }
+              },
+              {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
