@@ -13,3 +13,56 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello ${{ github.event.inputs.input }}
+      
+          
+  slack_notify:
+    name: Slack On-Prem Nightly Regression Results
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send custom JSON data to Slack workflow
+      id: slack
+      uses: slackapi/slack-github-action@v1.23.0
+      with:
+        # For posting a rich message using Block Kit
+        payload: |
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "\nGitHub Action *Slack Integration* build result: ${{ job.status }}\n\n *GitHub Commit:* ${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "\n\n*GitHub Action run:* \n${{ github.run_id }}"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "\n ${{ $GITHUB_STEP_SUMMARY }}"
+                },
+                  {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "\n${{ $GITHUB_STEP_SUMMARY }}"
+                },
+                  {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "\n ${{ job.status }}"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+    if: always()
