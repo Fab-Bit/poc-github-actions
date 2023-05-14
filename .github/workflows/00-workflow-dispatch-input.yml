@@ -45,13 +45,13 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "\n ${{ $GITHUB_STEP_SUMMARY }}"
+                  "text": "\n ${{ job.status  }}"
                 },
                   {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "\n${{ $GITHUB_STEP_SUMMARY }}"
+                  "text": "\n${{ job.status  }}"
                 },
                   {
                 "type": "section",
