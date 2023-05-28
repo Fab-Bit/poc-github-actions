@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
           echo 'URL<<EOF' >> $GITHUB_ENV
-          node scripts/test_workflow25.js >> $GITHUB_ENV
+          node $GITHUB_STEP_SUMMARY >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
       - name: use env var
