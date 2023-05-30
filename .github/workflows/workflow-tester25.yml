@@ -27,3 +27,10 @@ jobs:
 
       - name: use env var directly
         run: echo "$URL"
+        
+      - name: Output run_id
+        id: output_run_id
+        shell: bash
+        run: |
+          run_id=${{ github.run_id }}
+          echo "::set-output name=run_id::$run_id"
