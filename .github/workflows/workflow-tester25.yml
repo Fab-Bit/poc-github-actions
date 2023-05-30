@@ -32,5 +32,5 @@ jobs:
         id: output_run_id
         shell: bash
         run: |
-          run_id=${{ github.run_id }}
+          run_id=${{ github.job }}
           echo "::set-output name=run_id::$run_id"
