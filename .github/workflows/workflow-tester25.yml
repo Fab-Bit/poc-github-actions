@@ -16,6 +16,7 @@ jobs:
           node-version: 14 # Install the node version needed
           
       - name: Setup
+        id: summary
         uses: pl-strflt/job-summary-url-action@v1
         
       - name: set multiline env var
@@ -37,7 +38,7 @@ jobs:
         run: |
           run_id=${{ github.job }}
           echo "::set-output name=run_id::$run_id"
-          echo '${{ steps.exp.outputs.job_summary_url }}'
+          echo '${{ steps.summary.outputs.job_summary_url }}'
     
       
         
