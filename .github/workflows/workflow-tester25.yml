@@ -14,7 +14,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14 # Install the node version needed
-
+          
+      - name: Setup
+        uses: pl-strflt/export-job-urls@v1
+        
       - name: set multiline env var
         run: |
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
@@ -34,3 +37,7 @@ jobs:
         run: |
           run_id=${{ github.job }}
           echo "::set-output name=run_id::$run_id"
+          echo '${{ steps.exp.outputs.job_summary_url }}'
+    
+      
+        
