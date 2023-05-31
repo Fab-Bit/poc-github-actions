@@ -16,7 +16,7 @@ jobs:
           node-version: 14 # Install the node version needed
           
       - name: Setup
-        uses: pl-strflt/export-job-urls@v1
+        uses: pl-strflt/job-summary-url-action@v1
         
       - name: set multiline env var
         run: |
