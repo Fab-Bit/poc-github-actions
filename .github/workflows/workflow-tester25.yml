@@ -36,10 +36,9 @@ jobs:
         id: output_run_id
         shell: bash
         run: |
-          run_id=${{ github.job }}
-          echo "::set-output name=run_id::$run_id"
           echo '${{ steps.summary.outputs.job_summary_raw_url }}'
-          echo '${{ steps.summary.outputs.job_url }}'
+          echo '${{ job.html_url }}'
           cat $GITHUB_STEP_SUMMARY
+          echo "This is summary: $GITHUB_STEP_SUMMARY"
       
         
